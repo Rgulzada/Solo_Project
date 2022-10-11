@@ -52,16 +52,103 @@ public class User {
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyy-MM-dd")
 	private Date createdAt;
+	public User(
+			@NotEmpty(message = "first name is required!") @Size(min = 3, max = 30, message = "First name must be between 3 and 30 characters!") String firstname,
+			@NotEmpty(message = "last name is required!") @Size(min = 3, max = 30, message = "last name must be between 3 and 30 characters!") String lastname,
+			@NotEmpty(message = "Email is required!") @Size(message = "Please enter a valid email!") String email,
+			@NotEmpty(message = "Password is required!") @Size(min = 8, max = 128) String password) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.password = password;
+	}
 	@DateTimeFormat(pattern = "yyy-MM-dd")
 	private Date updatedAt;
 	
 	public User() {}
 	
+	//Getters and setters
+	
+	public Long getId() {
+		return id;
+	}
 
-	//Define Getters and setters
-	
-	
-	
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+
+	public String getLastname() {
+		return lastname;
+	}
+
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+	public String getConfirmPass() {
+		return confirmPass;
+	}
+
+
+	public void setConfirmPass(String confirmPass) {
+		this.confirmPass = confirmPass;
+	}
+
+
+	public Date getCreatedAt() {
+		return createdAt;
+	}
+
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+
+	public Date getUpdatedAt() {
+		return updatedAt;
+	}
+
+
+	public void setUpdatedAt(Date updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
+
 	@PrePersist
 	protected void onCreate() {
 		this.createdAt = new Date();

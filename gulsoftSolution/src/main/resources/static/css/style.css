@@ -91,6 +91,7 @@ html, body{
   	padding-top: 20px;
   	transition: width 0.4s ease;
 }
+
 .box-bar > div{
 	height: 4px;
 	background: #fff;
