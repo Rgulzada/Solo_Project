@@ -40,7 +40,7 @@ public class HomeController {
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.setAttribute("userId", null); 
-	    return "redirect:/login";
+	    return "redirect:/career";
 	}
 	
 	@GetMapping("/dashboard")
@@ -144,7 +144,7 @@ public class HomeController {
 			information.setUsers(thisInformation.getUsers());
 			information.setLead(user);
 			informationServ.updateInformation(information);
-			return "redirect:/home";
+			return "redirect:/dashboard";
 		}
 	}
 	

@@ -385,6 +385,23 @@ input[type=text]:focus, input[type=password]:focus {
   border: 1px solid #4e4e4e;
 }
 
+.reset-btn{
+  background-color: lightgray;
+  color: black;
+  font-weight: bold;
+  font-size: 0.7em;
+  padding: 7px;
+  margin: 8px;
+  cursor: pointer;
+  width: 10%;
+  border-radius: 6px;
+  border: 1px solid #4e4e4e;
+}
+
+.reset-btn:hover{
+	background-color: white;
+}
+
 #myfile{
 	background-color: white;
 }

@@ -28,7 +28,7 @@
 				<a href="#"><img src="images/gulsoft.png" alt="logo"></a>
 			</div>
 			<div class="row-menu">
-				<button class="contact-butt">Log Out</button>
+				<a href="/logout"><button class="contact-butt">Log Out</button></a>
 			</div>
 			<div class="box-bar">
 				Applied Positions
@@ -46,6 +46,7 @@
 		
 			<div class="regbox">	
 			 <h3>Fill out the form!</h3><br />
+			 
 				<form:form action="/informations/new" method="post" modelAttribute="information" class="loginform">
 					<div class="info-holder">
 						<label for="name">FirstName</label>
@@ -76,9 +77,11 @@
 					
 				  	<div>
 						<input type="button" class="submit-btn" value="Submit" />
+						
+						<input type="reset" value="Clear" class="reset-btn" />
 					</div>
 					
-				</form:form>	
+				</form:form>
 				
 			</div>
 		</div>
