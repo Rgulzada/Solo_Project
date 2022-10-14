@@ -1,12 +1,18 @@
 package com.dojo.java.gulsoftsolution.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -16,10 +22,10 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+
 @Entity
 @Table(name="Users")
 public class User {
-	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,15 +49,14 @@ public class User {
 	
 	@Transient
 	@NotEmpty(message = "Confirm password is required!")
-	@Size(min = 8, max = 128)
 	private String confirmPass;
-	
-	//Define Relationship
-	
 	
 	@Column(updatable = false)
 	@DateTimeFormat(pattern = "yyy-MM-dd")
 	private Date createdAt;
+	@DateTimeFormat(pattern = "yyy-MM-dd")
+	private Date updatedAt;
+	
 	public User(
 			@NotEmpty(message = "first name is required!") @Size(min = 3, max = 30, message = "First name must be between 3 and 30 characters!") String firstname,
 			@NotEmpty(message = "last name is required!") @Size(min = 3, max = 30, message = "last name must be between 3 and 30 characters!") String lastname,
@@ -62,8 +67,24 @@ public class User {
 		this.email = email;
 		this.password = password;
 	}
-	@DateTimeFormat(pattern = "yyy-MM-dd")
-	private Date updatedAt;
+	
+	//Define Relationship
+	 @ManyToMany(fetch = FetchType.LAZY)
+		@JoinTable(
+				name = "users_listings",
+				joinColumns = @JoinColumn(name = "user_id"),
+				inverseJoinColumns = @JoinColumn(name = "listing_id")
+		)
+	    private List<Information> informations;
+	    
+	    @Column(updatable=false)
+	    @OneToMany(mappedBy="lead", fetch = FetchType.LAZY)
+	    private List<Information> informationsLead;
+	    
+	    @Column(updatable=false)
+	    @OneToMany(mappedBy="creator", fetch = FetchType.LAZY)
+	    private List<Task> tasksCreated;
+	  
 	
 	public User() {}
 	
@@ -157,5 +178,24 @@ public class User {
 	protected void onUpdate() {
 		this.updatedAt = new Date();
 	}
-		
+	
+	public List<Information> getInformations() {
+		return informations;
+	}
+	public void setInformations(List<Information> informations) {
+		this.informations = informations;
+	}
+	public List<Information> getInformationsLed() {
+		return informationsLead;
+	}
+	public void setInformationsLed(List<Information> informationsLead) {
+		this.informationsLead = informationsLead;
+	}
+	public List<Task> getTasksCreated() {
+		return tasksCreated;
+	}
+	public void setTasksCreated(List<Task> tasksCreated) {
+		this.tasksCreated = tasksCreated;
+	}
+
 }

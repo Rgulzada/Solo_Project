@@ -71,7 +71,7 @@
 				<h2>About</h2>
 				<ul>
 				  <li>History</li>
-				  <li><a class="titles" href="">Careers</a></li>
+				  <li><a href="login.jsp" class="titles">Careers</a></li>
 				</ul>
 			</div>
 			<div class="footer-box">

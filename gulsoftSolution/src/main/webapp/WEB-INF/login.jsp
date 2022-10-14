@@ -45,32 +45,37 @@
 			<div class="regbox">	
 			 <h2>Register</h2>
 			 <p>Please fill in this form to create an account.</p>
-				<form class="loginform">
+				<form:form action="/register" method="post" modelAttribute="newUser" class="loginform">
 				  <div class="form-container">
 				    	<div>
 						    <label for="fistname"><b>First Name</b></label>
-						    <input type="text" placeholder="First Name" />
+						    <form:errors path="firstname" class="text-danger"/>
+						    <form:input path="firstname" type="text" placeholder="First Name" />
 						</div>
 						<div>
 						    <label for="lastname"><b>Last Name</b></label>
-						    <input type="text" placeholder="Last Name" >
+						    <form:errors path="lastname" class="text-danger" />
+						    <form:input path="lastname" type="text" placeholder="Last Name" />
 						</div>
 					    <div>
 						    <label for="email"><b>Email</b></label>
-						    <input type="text" placeholder="Email" />
+						    <form:errors path="email" class="text-danger" />
+						    <form:input path="email" placeholder="Email" />
 						</div>
 						<div>
 						    <label for="psw"><b>Password</b></label>
-						    <input type="password" placeholder="Password" />
+						    <form:errors path="password" class="text-danger" />
+						    <form:input path="password" type="password" placeholder="Password" />
 						</div>
 						<div>
 						    <label for="psw-repeat"><b>Repeat Password</b></label>
-						    <input type="password" placeholder="Repeat Password" />
+						    <form:errors path="confirmPass" class="text-danger" />
+						    <form:input path="confirmPass" type="password" placeholder="Repeat Password" />
 						 </div>
 					<p>By creating an account you agree to our <a href="#">Terms and Privacy</a>.</p>
 					</div>
 					<button type="submit" class="registerbtn">Register</button>
-				</form>		
+				</form:form>		
 			</div>
 			<div class="blankbox"></div>
 			<div class="logbox">

@@ -16,7 +16,11 @@ html, body{
   	bottom:0px;
   	left:0px;
 }
-
+.text-danger{
+	color: red;
+	font-size:0.7em;
+	font-family: sans-serif;
+}
 #menubar{
 	overflow: hidden;
 	position: fixed;
@@ -48,7 +52,6 @@ html, body{
 .row-menu{
 	flex: 1; 
 }
-
 
 .contact-butt{
 	height: 40px;
@@ -259,7 +262,7 @@ h6{
   	right:0px;
   	bottom:0px;
   	left:0px;
-  	height: 140%;
+  	height: 150%;
   	background-image: linear-gradient(to right,#dfd9ef, #e5bcd6);
 }
 .content-login{
@@ -283,6 +286,21 @@ h6{
 	margin: 30px;
 	margin-top:0px;
 	border-radius: 10px;
+}
+.uploadbox{
+	width: 25%;
+	height: 30%;
+	margin-top: 0px;
+}
+.uploadbox p{
+	font-size: 0.7em;
+	color: #4e4e4e;
+	line-height: normal;
+	text-align: center;
+	margin-top: 5px;
+}
+.uploadbox h3{
+	text-align: center;
 }
 .regbox{
 	width: 70%;
@@ -348,3 +366,69 @@ input[type=text]:focus, input[type=password]:focus {
 	margin-right: 20px;
 }
 
+/* userInfo*/
+
+.uploadForm{
+	text-align: center;
+	margin-left:0px;
+}
+.submit-btn{
+  background-color: lightgray;
+  color: black;
+  font-weight: bold;
+  font-size: 0.8em;
+  padding: 8px;
+  margin: 10px;
+  cursor: pointer;
+  width: 30%;
+  border-radius: 7px;
+  border: 1px solid #4e4e4e;
+}
+
+#myfile{
+	background-color: white;
+}
+.buildCV{
+	background-color: white;
+}
+.info-container{
+	display: block;
+	justify-content: center;
+ 	position:absolute;
+  	top:0px;
+  	right:0px;
+  	bottom:0px;
+  	left:0px;
+  	color:black;
+  	background-image: linear-gradient(to right,#dfd9ef, #e5bcd6);
+}
+/* add Info */
+
+.info-holder {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.loginform label{
+	margin-top: 10px;
+	margin-left: 10px;
+}
+textarea{
+	height: 70px;
+	width: 400px;
+	margin-left: 10px;
+	font-family: open-sans;
+	font-size: 1em;
+}
+textarea:focus , select:focus{
+	background-color: linen;
+	border: none;
+	outline: none;
+
+}
+.select-box select{
+	margin-left:10px;
+	width: 200px;
+	height: 60px;
+	padding: 5px;
+}
