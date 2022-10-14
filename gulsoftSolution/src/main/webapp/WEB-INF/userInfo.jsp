@@ -48,14 +48,14 @@
 				<!--  Here you will build your Resume Form -->
 				
 				<table>
-						<c:forEach var="information" items="${assignedInformations}">
-						<tr>
-							<td><c:out value="${information.name}" /></td>
-							<td><c:out value="${information.lead.lastname}" /></td>
-							<td><c:out value="${information.summary}" /></td>
-							<td><c:out value="${information.skills}" /></td>
-						</tr>	
-						</c:forEach>
+				<c:forEach var="information" items="${assignedInformations}">
+					<tr>
+						<td><c:out value="${information.name}" /></td>
+						<td><c:out value="${information.lead.lastname}" /></td>
+						<td><c:out value="${information.summary}" /></td>
+						<td><c:out value="${information.skills}" /></td>
+					</tr>	
+				</c:forEach>
 				</table>
 			</div>
 			<div class="uploadbox">

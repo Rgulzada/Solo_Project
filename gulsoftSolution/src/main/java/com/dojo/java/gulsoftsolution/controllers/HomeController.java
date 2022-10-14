@@ -52,7 +52,7 @@ public class HomeController {
 		Long userId = (Long) session.getAttribute("userId");
 		
 		model.addAttribute("user", userServ.findById(userId));
-		model.addAttribute("unassignedInformations", informationServ.getUnassignedUsers(userServ.findById(userId)));
+		//model.addAttribute("unassignedInformations", informationServ.getUnassignedUsers(userServ.findById(userId)));
 		model.addAttribute("assignedInformations", informationServ.getAssignedUsers(userServ.findById(userId)));
 		 
 		return "userInfo.jsp";
@@ -72,7 +72,7 @@ public class HomeController {
 		userServ.updateUser(user);
 		
 		model.addAttribute("user", userServ.findById(userId));
-		model.addAttribute("unassignedInformations", informationServ.getUnassignedUsers(user));
+		//model.addAttribute("unassignedInformations", informationServ.getUnassignedUsers(user));
 		model.addAttribute("assignedInformations", informationServ.getAssignedUsers(user));
 		
 		return "redirect:/dashboard";
@@ -93,7 +93,7 @@ public class HomeController {
 		userServ.updateUser(user);
 		
 		model.addAttribute("user", userServ.findById(userId));
-		model.addAttribute("unassignedInformations", informationServ.getUnassignedUsers(user));
+		//model.addAttribute("unassignedInformations", informationServ.getUnassignedUsers(user));
 		model.addAttribute("assignedInformations", informationServ.getAssignedUsers(user));
 		
 		return "redirect:/dashboard";
@@ -123,7 +123,7 @@ public class HomeController {
 		return "edit_information.jsp";
 	}
 	
-	@PostMapping("/informations/edit/{id}")
+	/*@PostMapping("/informations/edit/{id}")
 	public String editInformation(
 			@PathVariable("id") Long id, 
 			@Valid @ModelAttribute("information") Information information, 
@@ -138,7 +138,7 @@ public class HomeController {
 		User user = userServ.findById(userId);
 		
 		if(result.hasErrors()) {
-			return "edit_information.jsp";
+			return "edit_info.jsp";
 		}else {
 			Information thisInformation = informationServ.findById(id);
 			information.setUsers(thisInformation.getUsers());
@@ -147,7 +147,7 @@ public class HomeController {
 			return "redirect:/dashboard";
 		}
 	}
-	
+	*/
 	
 	@GetMapping("/informations/new")
 	public String newLogin(@ModelAttribute("information") Information information, HttpSession session) {
@@ -161,7 +161,7 @@ public class HomeController {
 	public String addNewInformation(@Valid @ModelAttribute("information") Information information, BindingResult result, HttpSession session) {
 		
 		if(session.getAttribute("userId") == null) {
-			return "redirect:/logout";
+		return "redirect:/logout";
 		}
 		Long userId = (Long) session.getAttribute("userId");
 		
@@ -178,7 +178,7 @@ public class HomeController {
 			informationServ.addInformation(newInformation);
 			user.getInformations().add(newInformation);
 			userServ.updateUser(user);
-			return "redirect:/userInfo";
+			return "redirect:/dashboard";
 		}
 	}
 	
@@ -244,6 +244,49 @@ public class HomeController {
 		model.addAttribute("assignedInformations", informationServ.getAssignedUsers(user));
 		return "redirect:/home";
 	}
-
+	
+	@GetMapping("/informations/{id}/tasks")
+	public String viewInformationTasks(@PathVariable("id") Long id, HttpSession session, Model model, @ModelAttribute("task") Task task) {
+		
+		if(session.getAttribute("userId") == null) {
+			return "redirect:/logout";
+		}
+		
+		Information information = informationServ.findById(id);
+		model.addAttribute("information", information);
+		model.addAttribute("tasks", taskServ.infoTasks(id));
+		return "tasks.jsp";
+	}
+	
+	@PostMapping("/informations/{id}/tasks")
+	public String newInformationTask(
+			@PathVariable("id") Long id, 
+			HttpSession session, 
+			Model model, 
+			@Valid @ModelAttribute("task") Task task, 
+			BindingResult result) {
+		
+		if(session.getAttribute("userId") == null) {
+			return "redirect:/logout";
+		}
+		Long userId = (Long) session.getAttribute("userId");
+		
+		Information information = informationServ.findById(id);
+		
+		if(result.hasErrors()) {
+			model.addAttribute("information", information);
+			model.addAttribute("tasks", taskServ.infoTasks(id));
+			return "userInfo.jsp";
+		}else {
+			Task newTask = new Task(task.getName(), 
+						   task.getLastname(), 
+						   task.getSummary(), 
+						   task.getSkills());
+			newTask.setInformation(information);
+			newTask.setCreator(userServ.findById(userId));
+			taskServ.addTask(newTask);
+			return "redirect:/informations/" + id + "/tasks";
+		}
+	}
 }
 

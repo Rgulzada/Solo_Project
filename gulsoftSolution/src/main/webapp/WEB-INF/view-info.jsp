@@ -45,7 +45,7 @@
 		<div class="logcontent">
 		
 			<div class="regbox">	
-			 <h3>Fill out the form!</h3><br />
+			 <h3>View Your Information</h3><br />
 		</div>
 		</div>
 	</div>

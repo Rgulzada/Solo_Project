@@ -23,7 +23,7 @@ import javax.validation.constraints.Past;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="infromations")
+@Table(name="informations")
 public class Information {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

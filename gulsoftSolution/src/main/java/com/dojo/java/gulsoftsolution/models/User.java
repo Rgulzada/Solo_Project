@@ -71,9 +71,9 @@ public class User {
 	//Define Relationship
 	 @ManyToMany(fetch = FetchType.LAZY)
 		@JoinTable(
-				name = "users_listings",
+				name = "users_informations",
 				joinColumns = @JoinColumn(name = "user_id"),
-				inverseJoinColumns = @JoinColumn(name = "listing_id")
+				inverseJoinColumns = @JoinColumn(name = "information_id")
 		)
 	    private List<Information> informations;
 	    
