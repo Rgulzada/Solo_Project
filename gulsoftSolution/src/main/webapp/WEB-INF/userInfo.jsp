@@ -37,18 +37,36 @@
 	</div>
 	<div class="content-login">
 		<div class="logcontent">
-			<h2>Welcome ${user.firstname} </h2>
+			<h2>Welcome ${user.name} </h2>
 		</div>
 		<div class="logcontent">
 			<div class="regbox">	
 			 <h3>Add Your Resume Manually!</h3><br />
-				<form class="loginform">
-					<input type="button" class="submit-btn" value="Build Your CV" />
-				</form>	
-				
+			 
+				<a href="/informations/new"><input type="button" class="submit-btn" value="Build Your CV" /></a>
+			
 				<!--  Here you will build your Resume Form-->
-				<form class="buildCV">
-				</form>
+				<table>
+				    <thead> 
+				    	<tr>
+				    		<th></th>
+				    		<th></th>
+				    		<th></th>
+				    		<th></th>
+				    	</tr>
+				    </thead>
+				    <tbody>
+						<c:forEach var="information" items="${assignedInformations}">
+						<tr>
+							<td><a href="/listings/${information.id}">${information.address}</a></td>
+							<td><c:out value="${listing.lead.firstName}"></c:out></td>
+							<td>$<c:out value="${listing.price}" /></td>
+							<td><fmt:formatDate value="${listing.dueDate}" pattern="MMMM dd"/></td>
+						</tr>	
+					</c:forEach>
+				    </tbody>
+				    
+				</table>
 			</div>
 			<div class="uploadbox">
 				<h3>Upload</h3>

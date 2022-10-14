@@ -33,7 +33,7 @@ public class User {
 	
 	@NotEmpty(message = "first name is required!")
 	@Size(min = 3, max = 30, message="First name must be between 3 and 30 characters!")
-	private String firstname;
+	private String name;
 	
 	@NotEmpty(message = "last name is required!")
 	@Size(min = 3, max = 30, message="last name must be between 3 and 30 characters!")
@@ -58,11 +58,11 @@ public class User {
 	private Date updatedAt;
 	
 	public User(
-			@NotEmpty(message = "first name is required!") @Size(min = 3, max = 30, message = "First name must be between 3 and 30 characters!") String firstname,
+			@NotEmpty(message = "first name is required!") @Size(min = 3, max = 30, message = "First name must be between 3 and 30 characters!") String name,
 			@NotEmpty(message = "last name is required!") @Size(min = 3, max = 30, message = "last name must be between 3 and 30 characters!") String lastname,
 			@NotEmpty(message = "Email is required!") @Size(message = "Please enter a valid email!") String email,
 			@NotEmpty(message = "Password is required!") @Size(min = 8, max = 128) String password) {
-		this.firstname = firstname;
+		this.name = name;
 		this.lastname = lastname;
 		this.email = email;
 		this.password = password;
@@ -100,13 +100,13 @@ public class User {
 	}
 
 
-	public String getFirstname() {
-		return firstname;
+	public String getName() {
+		return name;
 	}
 
 
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 

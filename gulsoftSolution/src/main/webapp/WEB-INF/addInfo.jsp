@@ -21,7 +21,7 @@
 	<title></title>
 </head>
 <body>
-<div class="info-container">
+<div class="container">
 	<div id="menubar">
 		<div class="menu">
 			<div id="logo-menu">
@@ -37,39 +37,48 @@
 	</div>
 	<div class="content-login">
 		<div class="logcontent">
-			<h2>Welcome ${user.firstname} </h2>
+			<h2>Welcome</h2>
 		</div>
 		<div class="logcontent">
+			<p><a href="/dashboard">Dashboard</a></p>
+		</div>
+		<div class="logcontent">
+		
 			<div class="regbox">	
 			 <h3>Fill out the form!</h3><br />
-				<form class="loginform">
+				<form:form action="/informations/new" method="post" modelAttribute="information" class="loginform">
 					<div class="info-holder">
-						<label for="fistname">FirstName</label>
-						<input type="text" placeholder="First Name" />
+						<label for="name">FirstName</label>
+						<form:errors path="name" class="text-danger"/>
+						<form:input path="name" type="text" placeholder="First Name" />
+						
 						<label for="lastname">LastName</label>
-						<input  type="text" placeholder="Last Name" />
+						<form:errors path="lastname" class="text-danger"/>
+						<form:input path="lastname" type="text" placeholder="Last Name" />
 					</div>
 					<div>
 						<label>Summary about yourself</label><br />
-						<textarea placeholder="Tell us about yourself..."></textarea>
+						<form:errors path="summary" class="text-danger"/>
+						<form:textarea path="summary" placeholder="Tell us about yourself..."></form:textarea>
 					</div>
 					<div class="select-box">
-						<label for="cars">Skills</label><br />
-						  	<select name="cars" id="cars" multiple size=2>
-							    <option value="volvo">HTML</option>
-							    <option value="saab">CSS</option>
-							    <option value="opel">JavaScript</option>
-							    <option value="audi">Teamwork</option>
-							    <option value="opel">Communication</option>
-							    <option value="audi">jQuery</option>
-						    </select>
+						<label>Skills</label><br />
+						<form:errors path="skills" class="text-danger"/>
+						  	<form:select path="skills" id="skil" size="3">
+							    <option value="html">HTML</option>
+							    <option value="css">CSS</option>
+							    <option value="jsc">JavaScript</option>
+							    <option value="work">Teamwork</option>
+							    <option value="com">Communication</option>
+							    <option value="jQ">jQuery</option>
+						    </form:select>
 					</div>
 					
 				  	<div>
 						<input type="button" class="submit-btn" value="Submit" />
 					</div>
 					
-				</form>	
+				</form:form>	
 				
 			</div>
 		</div>

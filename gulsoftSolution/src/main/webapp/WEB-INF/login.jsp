@@ -48,9 +48,9 @@
 				<form:form action="/register" method="post" modelAttribute="newUser" class="loginform">
 				  <div class="form-container">
 				    	<div>
-						    <label for="fistname"><b>First Name</b></label>
-						    <form:errors path="firstname" class="text-danger"/>
-						    <form:input path="firstname" type="text" placeholder="First Name" />
+						    <label><b>First Name</b></label>
+						    <form:errors path="name" class="text-danger"/>
+						    <form:input path="name" type="text" placeholder="First Name" />
 						</div>
 						<div>
 						    <label for="lastname"><b>Last Name</b></label>
@@ -81,21 +81,19 @@
 			<div class="logbox">
 				<h3>Sign In</h3>
 				<p>Already have an account?
-				<form class="loginform">
+				<form:form action="loginuser" method="post" modelAttribute="newLogin" class="loginform">
 					<div>
 						<label for="email"><b>Email</b></label>
-						<input type="text" placeholder="Enter Email" />
+						<form:errors path="email" class="text-danger"/>
+						<form:input path="email" type="text" placeholder="Enter Email" />
 					</div>
 					<div>
 						 <label for="psw"><b>Password</b></label>
-						 <input type="password" placeholder="Password" />
-					</div>
-					<div>
-						  <label for="confirmpass"><b>Confirm Password</b></label>
-						  <input type="password" placeholder="Confirm Password" />
+						 <form:errors path="password" class="text-danger"/>
+						 <form:input path="password" type="password" placeholder="Password" />
 					</div>
 					<button type="submit" class="registerbtn">Sign In</button>
-				</form>
+				</form:form>
 			</div>
 		</div>
 	</div>
